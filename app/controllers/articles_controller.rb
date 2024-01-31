@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+  # Note: obviously if this were a real application, we would not include
+  # the password in plaintext in github...
+  http_basic_authenticate_with name: "root", password: "123456", except: [:index, :show]
+
   def index
     @articles = Article.all
   end
